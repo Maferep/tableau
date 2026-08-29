@@ -1,0 +1,17 @@
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag "imagefeed" %>
+<% end %>
+<div id="images" class="image-feed__grid">
+<% images.each do |image| %>
+    <div>
+      <div>
+        <a href=<%=image_path(image.id)%>>
+          <%= image_tag image.content, class:"image-feed__grid__img", style: "min-height:100px" %>
+        </a>
+      </div>
+      <div class="image-feed__grid__caption">
+        <%= link_to image.name, image_path(image.id) %>
+      </div>
+    </div>
+<% end %>

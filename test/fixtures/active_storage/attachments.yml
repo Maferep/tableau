@@ -1,0 +1,4 @@
+one_content:
+  name: content
+  record: one (Image)
+  blob: one_content_blob

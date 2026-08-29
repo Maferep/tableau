@@ -1,0 +1,35 @@
+.image-feed__grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    transform:scale(1);
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.image-feed__grid__img:hover {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    transform:scale(1.03);
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.image-feed__grid__img {
+    display: block;
+    object-fit: cover;
+    margin:auto;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 1rem;
+}
+
+.image-feed__grid__caption {
+    padding:1rem;
+    font-weight: bold;
+}
+
+.image-feed__grid__caption a {
+    text-decoration: none;
+}

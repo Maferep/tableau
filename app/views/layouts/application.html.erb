@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Tableau" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Tableau">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= yield :head %>
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag "cormeau-reset" %>
+    <%= stylesheet_link_tag "application" %>
+    <%= stylesheet_link_tag "base" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+  <header class="navbar">
+    <nav class="nav">
+      <ul>
+        <span style="text-align:left;display:inline-block;width:49%">
+          <li><a href="/">Home</a></li>
+          <li><a href="/images/new"><%= image_tag "icons/file_upload.svg", class:"filter__svg__white" %></a></li>
+        </span>
+        <span style="text-align:right;display:inline-block;width:50%">
+        <% if authenticated? %>
+          <li><%= button_to "Sign Out", session_path, method: :delete  %></li>
+        <% else %>
+          <li><%= link_to "Sign In", new_session_path %></li>
+          <li><a href="/users/new">Signup</a></li>
+        <% end %>
+        </span>
+      </ul>
+    </nav>
+  </header>
+    <%= content_for?(:content) ? yield(:content) : yield %>
+  </body>
+</html>

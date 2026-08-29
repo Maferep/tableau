@@ -1,0 +1,9 @@
+<h1><%= @image.name %></h1>
+<style type="text/css">
+.image-show__main-img {
+    margin-bottom: 1rem;
+}
+</style>
+<label> by <a href="<%= user_path @image.user_id %>"><%= User.find(@image.user_id).username %></a></label>
+<%= image_tag @image.content, class:"image-show__main-img"%>
+<%= button_to "Back", images_path, method: :get %>

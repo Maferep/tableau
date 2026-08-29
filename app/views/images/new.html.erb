@@ -1,0 +1,52 @@
+<% content_for :head do %>
+  <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+  <style type="text/css">
+  .filepond--root * {
+    background-color: #333340;
+  }
+  .filepond--drop-label {
+    border-radius: 1rem;
+  }
+  .error_explanation {
+    background: #992222;
+    border-radius: 1rem;
+    text-align: left;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  </style>
+<% end %>
+<h1>New image</h1>
+
+<% if @image.errors.any? %>
+  <div id="error_explanation" class="error_explanation">
+    <p><b><%= pluralize(@image.errors.count, "issue") %> found with your upload:</b></p>
+
+    <ul>
+      <% @image.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @image do |form| %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+    <%= form.label :content, "Upload file" %>
+    <%= form.file_field(:content,accept: 'image/png,image/gif,image/jpeg,image/avif,image/jpegxl', class:"filepond")  %>
+    <div style="padding-top:1rem;">
+    <%= form.submit %>
+    </div>
+<% end %>
+
+<!-- Load FilePond library -->
+<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+
+<!-- Turn all file input elements into ponds -->
+<script>
+    FilePond.parse(document.body);
+    FilePond.setOptions({
+        storeAsFile: true,
+    })
+</script>

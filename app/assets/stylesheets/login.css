@@ -1,0 +1,15 @@
+
+.login__container {
+    margin: auto;
+    padding:1rem;
+    max-width: max(50%, 20rem);
+    padding: 1rem;
+}
+
+.login__notice {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 100rem;
+    background-color: #e33;
+    color: #ddd !important;
+}
