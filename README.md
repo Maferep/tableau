@@ -1,24 +1,21 @@
-# README
+# Tableau
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tableau is a basic image board with support for modern web formats (webp, AVIF, JPEGXL).
 
-Things you may want to cover:
+## Running
+### development
+Initialize database with:
+```bin/rails db:migrate```
+Start development server:
+```bin/rails server```
+### production
+Generate production assets with
+```RAILS_ENV=production bin/rails assets:precompile```
+```RAILS_ENV=production bin/rails server```
 
-* Ruby version
+## Versions
+Ruby 3.4
+Rails 8.1
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Additional dependencies
+- Filepond for file uploads
