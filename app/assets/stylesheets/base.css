@@ -3,12 +3,12 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 :root {
-    --background: #23232f;
-    --navbar: #1b1b26;
+    --background: #110e15;
+    --navbar: #1a1127;
     --highlight: #F7882F;
     --text: #d1d8e1;
     --textarea-bg: rgb(41, 40, 44);
-    --button-bg: rgb(105, 102, 109);
+    --button-bg: rgb(51, 45, 59);
 }
 
 body {
@@ -92,6 +92,7 @@ button {
     vertical-align: top;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     touch-action: manipulation;
+    margin-bottom: 1rem;
 }
 button.primary {
     background: var(--highlight);
@@ -218,6 +219,11 @@ select:-moz-focusring {
     margin-bottom: 10px;
     position: relative;
     background-color: var(--navbar);
+    border-radius: 0 0 1rem 1rem;
+}
+.navbar button {
+    margin: 0;
+    border: solid 0.1rem var(--text);
 }
 .nav {
     padding: 1rem;
