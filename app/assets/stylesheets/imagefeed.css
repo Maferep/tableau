@@ -8,9 +8,6 @@
 }
 
 .image-feed__grid__img:hover {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
     transform:scale(1.03);
     -webkit-transition: all 0.2s;
     transition: all 0.2s;

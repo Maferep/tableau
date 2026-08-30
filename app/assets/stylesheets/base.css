@@ -2,8 +2,17 @@
 @import url('https://fonts.googleapis.com/css?family=Droid+Sans+Mono');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
+:root {
+    --background: #23232f;
+    --navbar: #1b1b26;
+    --highlight: #F7882F;
+    --text: #d1d8e1;
+    --textarea-bg: rgb(41, 40, 44);
+    --button-bg: rgb(105, 102, 109);
+}
+
 body {
-    background-color: #2d3239;
+    background-color: var(--background);
 }
 
 body, h1, h2, h3, h4, h5, h6, section, p, pre, code, input, select, textarea, button, a, span, label {
@@ -11,7 +20,7 @@ body, h1, h2, h3, h4, h5, h6, section, p, pre, code, input, select, textarea, bu
     padding: 0;
     border: 0;
     font-family: 'Open Sans', sans-serif;
-    color: #d1d8e1;
+    color: var(--text);
     line-height: 1.4;
     vertical-align: bottom;
     word-wrap: break-word;
@@ -49,7 +58,7 @@ input,
 select,
 .select,
 textarea {
-    background-color: rgb(41, 40, 44);
+    background-color: var(--textarea-bg);
     -webkit-border-radius: 0;
     border-radius: 1rem;
     line-height: 17px;
@@ -63,7 +72,7 @@ input[type=email],
 input[type=tel],
 input[type=url],
 input[type=password] {
-    -webkit-appearance: none;
+    appearance: none;
 }
 select {
     cursor: pointer;
@@ -77,19 +86,20 @@ textarea {
 button {
     padding: 1rem;
     border-radius: 1rem;
-    background: #a9a9a9;
-    color: #fff;
+    background: var(--button-bg);
+    color: var(--text);
     line-height: 0;
     vertical-align: top;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     touch-action: manipulation;
 }
 button.primary {
-    background: #6a6969;
+    background: var(--highlight);
 }
 button:hover {
     cursor: pointer;
-    background-color: #F7882F;
+    background-color: var(--highlight);
+    color: #fff;
 }
 button::-moz-focus-inner {
     border: 0;
@@ -116,11 +126,6 @@ a:hover span {
 }
 * {
     text-decoration: none;
-}
-
-/*list*/
-ul {
-    margin-bottom: 0.5rem;
 }
 
 /* Table */
@@ -210,9 +215,9 @@ select:-moz-focusring {
 
 /* Navbar */
 .navbar {
-    border-bottom: 1px solid #e1e1e8;
     margin-bottom: 10px;
     position: relative;
+    background-color: var(--navbar);
 }
 .nav {
     padding: 1rem;
@@ -221,8 +226,10 @@ select:-moz-focusring {
     width: 100%;
 }
 .nav ul {
+    display: flex;
     padding: 0;
     list-style-type: none;
+    align-items: center;
 }
 .nav li a {
     text-decoration: none;
