@@ -13,6 +13,10 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
   end
   def create
+    if not Current.user.allowed_in
+      render :new, status: :forbidden
+      return
+    end
     _params = image_params
     uuid = SecureRandom.uuid
     _params[:web_address] = uuid

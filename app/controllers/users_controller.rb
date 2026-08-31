@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @user.password_confirmation = params[:password_validation]
     @user.username = "anonymous_" + SecureRandom.uuid
     @user.signup_reason = params[:signup_reason]
+    @user.allowed_in = false
     if @user.save
       redirect_to "/session/new"
     else

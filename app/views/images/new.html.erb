@@ -16,9 +16,9 @@
   }
   </style>
 <% end %>
-<h1>New image</h1>
+<h1>Upload image</h1>
 
-<% if @image.errors.any? %>
+<% if @image and @image.errors.any? %>
   <div id="error_explanation" class="error_explanation">
     <p><b><%= pluralize(@image.errors.count, "issue") %> found with your upload:</b></p>
 
@@ -28,8 +28,13 @@
       <% end %>
     </ul>
   </div>
+<% elsif not Current.user.allowed_in %>
+  <div id="error_explanation" class="error_explanation">
+    <p><b>You don't have permission to post images yet. Wait for an e-mail from the administrator letting you know if your application was approved.</b></p>
+  </div>
 <% end %>
 
+<% if @image %>
 <%= form_with model: @image do |form| %>
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -38,6 +43,7 @@
     <div style="padding-top:1rem;">
     <%= form.submit %>
     </div>
+<% end %>
 <% end %>
 
 <!-- Load FilePond library -->
