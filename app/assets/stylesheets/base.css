@@ -266,7 +266,7 @@ select:-moz-focusring {
 
 .general-container {
     margin:auto;
-    max-width: max(20rem, 50%);
+    max-width: max(50rem, 50%);
 }
 
 /* Custom style for file input */

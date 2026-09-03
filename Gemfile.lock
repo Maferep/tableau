@@ -308,6 +308,8 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (3.4.1)
+    safe_image (0.5.1)
+      nokogiri (~> 1.16)
     securerandom (0.4.1)
     selenium-webdriver (4.47.0)
       base64 (~> 0.2)
@@ -401,6 +403,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.1.3, >= 8.1.3.1)
   rubocop-rails-omakase
+  safe_image (>= 0.5.1)
   selenium-webdriver
   solid_cable
   solid_cache

@@ -32,9 +32,13 @@
   <div id="error_explanation" class="error_explanation">
     <p><b>You don't have permission to post images yet. Wait for an e-mail from the administrator letting you know if your application was approved.</b></p>
   </div>
+<% elsif response.status > 299 or response.status < 200 # TODO proper error handling %>
+  <div id="error_explanation" class="error_explanation">
+    <p><b>Something is wrong with yout image. Make sure you're using an accepted format.</b></p>
+  </div>
 <% end %>
 
-<% if @image %>
+<% if @image and Current.user.allowed_in %>
 <%= form_with model: @image do |form| %>
     <%= form.label :name %>
     <%= form.text_field :name %>

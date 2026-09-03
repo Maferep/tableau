@@ -1,5 +1,5 @@
 require_relative "boot"
-
+require "safe_image"
 require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
@@ -23,5 +23,6 @@ module Tableau
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    SafeImage.configure!(backend: :vips, landlock: false)
   end
 end
