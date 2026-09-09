@@ -13,11 +13,9 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
   end
   def create
-    unless Current.user.allowed_in
-      render :new, status: :forbidden
-      return
-    end
-    @image = image_model(image_params)
+    return render :new, status: :forbidden unless Current.user.allowed_in
+
+    @image = build_image
     if @image.save
       redirect_to @image
     else
@@ -27,19 +25,20 @@ class ImagesController < ApplicationController
 
   private
 
-  # @return [Image]
-  def image_model(_params)
-    # @type [ActionDispatch::Http::UploadedFile] attachment
-    attachment = _params[:content]
-    _params[:web_address] = SecureRandom.uuid
-    _params[:mimetype] = attachment.content_type
-    img = Image.new(_params)
-    img.content.attach(io: attachment.tempfile, filename: _params[:web_address], content_type: _params[:mimetype])
-    Current.user.images.push(img)
-    img
+  def build_image
+    attrs = image_params
+    attachment = attrs[:content]
+    uuid = SecureRandom.uuid
+
+    image = Current.user.images.build(
+      name: attrs[:name],
+      web_address: uuid,
+      mimetype: attachment.content_type
+    )
+    image.content.attach(io: attachment.tempfile, filename: uuid, content_type: attachment.content_type)
+    image
   end
 
-  # @return [ActionController::Parameters]
   def image_params
     params.expect(image: [ :name, :content ])
   end
